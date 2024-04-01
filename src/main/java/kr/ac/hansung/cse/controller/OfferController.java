@@ -16,16 +16,18 @@ import java.util.List;
 @Controller
 public class OfferController {
 
+    //컨트롤러는 서비스에 의존하고 있음 -> 서비스 의존성 주입
+    //                              데이터 베이스 접근
     // Controller -> Service -> Dao
-    @Autowired
+    @Autowired //의존성 주입
     private OfferService offerService;
 
     @GetMapping("/offers")
     public String showOffers(Model model) {
-        List<Offer> offers = offerService.getAllOffers();
-        model.addAttribute("id_offers", offers);
+        List<Offer> offers = offerService.getAllOffers(); //서비스 레이어에 getAllOffers 메소드 호출
+        model.addAttribute("id_offers", offers); //가져온결과를 모델에 저장 , id: id_offers
 
-        return "offers";
+        return "offers";//view 이름
     }
 
     @GetMapping("/createoffer")

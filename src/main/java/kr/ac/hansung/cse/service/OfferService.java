@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class OfferService {
 
-    //service -> dao
+    //service -> dao(데이터 액세스 레이어)
     @Autowired
     private OfferDao offerDao;
 

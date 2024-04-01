@@ -13,7 +13,7 @@ import javax.validation.constraints.Size;
 @Setter
 @ToString
 @NoArgsConstructor
-public class Offer {
+public class Offer { //데이터베이스에 저장할 객체
     private int id;
 
     @Size(min=2, max=100, message = "Name must be between 2 and 100 chars")

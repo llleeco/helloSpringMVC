@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 @Repository
-public class OfferDao {
+public class OfferDao { //데이터 베이스 실제로 액세스,데이터를 가지고 오는 부분
 
     private JdbcTemplate jdbcTemplate;  // psa(portable service abstraction, sql(x) api
 
@@ -27,7 +27,7 @@ public class OfferDao {
 
     }
     //query and return a single object
-    public Offer getOffer(String name) {
+    public Offer getOffer(String name) {  //하나의 Offer 조회 - R
 
         String sqlStatement= "select * from offers where name=?";
         return jdbcTemplate.queryForObject(sqlStatement, new Object[] {name},
@@ -50,7 +50,7 @@ public class OfferDao {
 
     //query and return multiple objects
     // cRud method
-    public List<Offer> getOffers() {
+    public List<Offer> getOffers() { //R - 조회
 
         String sqlStatement= "select * from offers";
         return jdbcTemplate.query(sqlStatement, new RowMapper<Offer>() {
@@ -72,7 +72,7 @@ public class OfferDao {
 
 
     // Crud method
-    public boolean insert(Offer offer) {
+    public boolean insert(Offer offer) { // C - 생성
 
         String name= offer.getName();
         String email= offer.getEmail();
@@ -84,7 +84,7 @@ public class OfferDao {
     }
 
     // crUd method
-    public boolean update(Offer offer) {
+    public boolean update(Offer offer) { //U - 수정
 
         int id = offer.getId();
         String name= offer.getName();
@@ -97,7 +97,7 @@ public class OfferDao {
     }
 
     //cruD method
-    public boolean delete(int id) {
+    public boolean delete(int id) { //D - 삭제
         String sqlStatement= "delete from offers where id=?";
         return (jdbcTemplate.update(sqlStatement, new Object[] {id}) == 1);
     }
